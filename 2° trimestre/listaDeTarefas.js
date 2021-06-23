@@ -9,13 +9,28 @@
 
         botaoDelete.addEventListener('click', deletarTarefa)
         
+        console.log(botaoDelete);
+
         return botaoDelete
+    }
+    function criarBotaoConcluir(){
+        const botaoConcluir= document.createElement("input");
+        botaoConcluir.setAttribute("type", "checkbox");
+        botaoConcluir.classList="form-check-input";
+
+        return botaoConcluir
     }
 
     function deletarTarefa(evento){
         const botaoDeleteClicado = evento.target
         const itemDaLista = botaoDeleteClicado.parentElement
         itemDaLista.remove()
+    }
+
+    function concluirTarefa(evento){
+        const botaoConcluirClicado=evento.target;
+        const itemDaListaConcluido= botaoConcluirClicado.parentElement;
+        itemDaListaConcluido.classList.toggle('tarefa_concluida');
     }
 
     function criarTarefa(evento){
@@ -31,13 +46,13 @@
         novoItem = document.createElement('li')
         novoItem.appendChild(novaLabel)
         novoItem.appendChild(criarBotaoDelete())
+        novoItem.appendChild(criarBotaoConcluir())
         
         listaDeTarefas.appendChild(novoItem)
 
         inputTarefa.value = ""
 
     }
-
 
     novaTarefa.addEventListener('click', criarTarefa)
 })()
