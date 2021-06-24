@@ -14,9 +14,10 @@
         return botaoDelete
     }
     function criarBotaoConcluir(){
-        const botaoConcluir= document.createElement("input");
-        botaoConcluir.setAttribute("type", "checkbox");
-        botaoConcluir.classList="form-check-input";
+        const botaoConcluir= document.createElement("input")
+        botaoConcluir.setAttribute("type", "checkbox")
+        botaoConcluir.classList="form-check-input"
+        botaoConcluir.addEventListener('click', concluirTarefa)
 
         return botaoConcluir
     }
@@ -28,9 +29,9 @@
     }
 
     function concluirTarefa(evento){
-        const botaoConcluirClicado=evento.target;
-        const itemDaListaConcluido= botaoConcluirClicado.parentElement;
-        itemDaListaConcluido.classList.toggle('tarefa_concluida');
+        const botaoConcluirClicado=evento.target
+        const itemDaListaConcluido= botaoConcluirClicado.parentElement
+        itemDaListaConcluido.classList.toggle('tarefa_concluida')
     }
 
     function criarTarefa(evento){
@@ -44,9 +45,10 @@
         novaLabel.className = "form-check-label"
 
         novoItem = document.createElement('li')
+        
+        novoItem.appendChild(criarBotaoConcluir())
         novoItem.appendChild(novaLabel)
         novoItem.appendChild(criarBotaoDelete())
-        novoItem.appendChild(criarBotaoConcluir())
         
         listaDeTarefas.appendChild(novoItem)
 
